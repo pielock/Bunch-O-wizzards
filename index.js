@@ -13,11 +13,27 @@ async function fetchData() {
     }
 
     const data = await response.json();
-    const pokemonSprite = data.sprites.front_default;
+
+    const pokemonDataEl = document.getElementById("pokemon-data")
+    const pokemonSprite = data.sprites.front_default; // Img Src 
     const imgEl = document.getElementById("pokemonSprite");
 
-    imgEl.src = pokemonSprite;
-    imgEl.style.display = "block";
+    console.log(data);
+    let types = ""
+    data.types.forEach(t => types += t.type.name + " ")
+
+    pokemonDataEl.innerHTML = `
+      <img
+          src="${data.sprites.front_default}"
+          alt="Pokemon Sprite"
+          id="pokemonSprite"
+        />
+      <p>${data.name}</p>
+      <p>${types}</p>
+      
+      `
+      
+    
   } catch (err) {
     console.error(err);
   }

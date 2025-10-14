@@ -9,14 +9,10 @@
   <body>
     <section class="pokemon-section">
       <h1>Pokemon API's</h1>
-      <input type="text" id="pokemonName" placeholder="Enter Pokemon Name" />
+      <input type="text" id="pokemonName" placeholder="Enter Pokemon Name" value="pikachu"/>
       <button onclick="fetchData()">Fetch Pokemon</button><br />
-      <img
-        src=""
-        alt="Pokemon Sprite"
-        id="pokemonSprite"
-        style="display: none"
-      />
+      <div class="pokemon-data" id="pokemon-data">        
+      </div>
     </section>
     <script src="index.js"></script>
   </body>
