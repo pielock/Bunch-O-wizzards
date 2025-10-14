@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nasa API Demo</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>NASA API Demo</h1>
-    <p>Sponsored By @Jamal @Steven @Zheng</p>
-    
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section class="pokemon-section">
+      <h1>Pokemon API's</h1>
+      <input type="text" id="pokemonName" placeholder="Enter Pokemon Name" />
+      <button onclick="fetchData()">Fetch Pokemon</button><br />
+      <img
+        src=""
+        alt="Pokemon Sprite"
+        id="pokemonSprite"
+        style="display: none"
+      />
+    </section>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
