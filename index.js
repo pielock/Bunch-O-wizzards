@@ -56,10 +56,24 @@ $(async function () {
     }
 
     const data = await res.json();
-    const allPokemon = data.results.map((pokemon) => pokemon.name); // Fetching a list of all Pokemon (up to 2000)
+    const allPokemon = data.results.map((pokemon) => pokemon.name); // Fetching list of all Pokemon (up to 2000)
 
     $("#pokemonName").autocomplete({
-      source: allPokemon,
+      source: function (request, response) {
+        const term = request.term.toLowerCase();
+
+        // Filter and sort so list displays closer matching items first
+        const results = allPokemon
+          .filter((name) => name.includes(term))
+          .sort((a, b) => {
+            const ia = a.indexOf(term);
+            const ib = b.indexOf(term);
+            return ia - ib;
+          })
+          .slice(0, 20);
+
+        response(results);
+      },
     });
   } catch (err) {
     console.error(err);
