@@ -22,7 +22,7 @@ async function fetchData() {
     // Parsing the JSON data from the responses
     const data = await response.json();
 
-    // console.log(data); // <-- Logging data to see what data we can pull
+    console.log(data); // <-- Logging data to see what data we can pull
     const types = data.types.map((t) => t.type.name).join(", ");
 
     pokemonDataEl.innerHTML = `
@@ -32,7 +32,7 @@ async function fetchData() {
           id="pokemonSprite"
         />
       <img
-          src="${data.sprites.back_default}"
+          src="${data.sprites.other["official-artwork"].front_default}"
           alt="Pokemon Sprite"
           id="pokemonSprite"
         />      
@@ -45,6 +45,14 @@ async function fetchData() {
       "Sorry, we are having some temporary server issues";
   }
 }
+
+/**
+ * ========== TO DO LIST ==========
+ * 1. Better Pictures - COMPLETE
+ * 2. ID
+ * 3. Abilities
+ * 4. Height + Weight
+ */
 
 /**
  * jQuery function to set up autocomplete on the #pokemonName input field.
