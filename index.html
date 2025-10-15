@@ -5,14 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nasa API Demo</title>
     <link rel="stylesheet" href="styles.css" />
+
+     <!-- jQuery via CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"
+    />
   </head>
   <body>
     <section class="pokemon-section">
       <h1>Pokemon API's</h1>
-      <input type="text" id="pokemonName" placeholder="Enter Pokemon Name" value="pikachu"/>
+      <input
+        type="text"
+        id="pokemonName"
+        placeholder="Enter Pokemon Name"
+        value="pikachu"
+      />
       <button onclick="fetchData()">Fetch Pokemon</button><br />
-      <div class="pokemon-data" id="pokemon-data">        
-      </div>
+      <div class="pokemon-data" id="pokemon-data"></div>
     </section>
     <script src="index.js"></script>
   </body>
