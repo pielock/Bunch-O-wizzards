@@ -2,14 +2,28 @@
  * from the PokeAPI and display it on the webpage.
  * Handles errors gracefully and updates the DOM accordingly.
  */
+
+let ALL_POKEMONS = [];
+
 async function fetchData() {
   const pokemonDataEl = document.getElementById("pokemon-data");
   pokemonDataEl.innerText = "Please wait we are fetching the Pokemon's Data";
 
   try {
+    const pokemonNameEl = document.getElementById("pokemonName");
     const pokemonName = document
       .getElementById("pokemonName")
-      .value.toLowerCase();
+      .value.toLowerCase()
+      .trim();
+
+    // Validate Users Input (Cannot be empty && Must be valid pokemon)
+    if (!pokemonNameEl.value) {
+      console.log(pokemonName.value);
+      return (pokemonDataEl.innerText = "Input cannot be empty");
+    } else if (!ALL_POKEMONS.includes(pokemonName)) {
+      return (pokemonDataEl.innerText = "Please enter a valid pokemon");
+    }
+
     // Fetching data from the PokeAPI for a specific Pokemon
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
@@ -22,22 +36,26 @@ async function fetchData() {
     // Parsing the JSON data from the responses
     const data = await response.json();
 
-    console.log(data); // <-- Logging data to see what data we can pull
+    // console.log(data); // <-- Logging data to see what data we can pull
     const types = data.types.map((t) => t.type.name).join(", ");
 
-    pokemonDataEl.innerHTML = `
-      <img
-          src="${data.sprites.front_default}"
-          alt="Pokemon Sprite"
-          id="pokemonSprite"
-        />
+    const abilities = data.abilities.map((a) => a.ability.name).join(", ");
+    console.log(data);
+
+    pokemonDataEl.innerHTML = `      
       <img
           src="${data.sprites.other["official-artwork"].front_default}"
           alt="Pokemon Sprite"
           id="pokemonSprite"
         />      
-      <p>${data.name}</p>
-      <p>${types}</p>
+      <p id="name">Name: ${data.name}</p>
+      <p id="type">Type: ${types}</p>
+      <p id="abilities">Abilities: ${abilities}</p>            
+      <p id="id">ID: ${data.id}</p>
+      <p id="height">Height: ${data.height / 10} Meters</p>
+      <p id="weight">Weight: ${data.weight / 10} Kg</p>
+      
+    
       `;
   } catch (err) {
     console.error(err);
@@ -49,9 +67,9 @@ async function fetchData() {
 /**
  * ========== TO DO LIST ==========
  * 1. Better Pictures - COMPLETE
- * 2. ID
- * 3. Abilities
- * 4. Height + Weight
+ * 2. ID - COMPLETE
+ * 3. Abilities - COMPLETE
+ * 4. Height + Weight - COMPLETE
  */
 
 /**
@@ -71,6 +89,7 @@ $(async function () {
 
     const data = await res.json();
     const allPokemon = data.results.map((pokemon) => pokemon.name); // Fetching list of all Pokemon (up to 2000)
+    ALL_POKEMONS = allPokemon;
 
     $("#pokemonName").autocomplete({
       source: function (request, response) {
@@ -85,7 +104,6 @@ $(async function () {
             return ia - ib;
           })
           .slice(0, 20);
-
         response(results);
       },
     });
@@ -94,4 +112,3 @@ $(async function () {
   }
 });
 
-fetchData();
