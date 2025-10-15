@@ -3,10 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nasa API Demo</title>
-    <link rel="stylesheet" href="styles.css" />
+    <!-- Pokemon Font -->
+    <link
+      href="https://fonts.cdnfonts.com/css/pokemon-solid"
+      rel="stylesheet"
+    />
 
-     <!-- jQuery via CDN-->
+    <!-- jQuery via CDN-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- jQuery UI -->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
@@ -14,17 +17,21 @@
       rel="stylesheet"
       href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"
     />
+
+    <link rel="stylesheet" href="styles.css" />
+    <title>Nasa API Demo</title>
   </head>
   <body>
     <section class="pokemon-section">
-      <h1>Pokemon API's</h1>
+      <h1 class="poke-font">Pokemon API's</h1>
       <input
         type="text"
         id="pokemonName"
         placeholder="Enter Pokemon Name"
-        value="pikachu"
+        value="growlithe"
       />
-      <button onclick="fetchData()">Fetch Pokemon</button><br />
+      <button class="poke-font" onclick="fetchData()">Fetch Pokemon</button
+      ><br />
       <div class="pokemon-data" id="pokemon-data"></div>
     </section>
     <script src="index.js"></script>

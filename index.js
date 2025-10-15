@@ -1,6 +1,7 @@
-//=============================================
-// === Async function to fetch Pokemon data ===
-//=============================================
+/** Async function to fetch Pokemon data
+ * from the PokeAPI and display it on the webpage.
+ * Handles errors gracefully and updates the DOM accordingly.
+ */
 async function fetchData() {
   const pokemonDataEl = document.getElementById("pokemon-data");
   pokemonDataEl.innerText = "Please wait we are fetching the Pokemon's Data";
@@ -45,6 +46,11 @@ async function fetchData() {
   }
 }
 
+/**
+ * jQuery function to set up autocomplete on the #pokemonName input field.
+ * Fetches a list of all Pokemon names from the PokeAPI and uses that list
+ * to provide autocomplete suggestions as the user types.
+ */
 $(async function () {
   try {
     const res = await fetch(
