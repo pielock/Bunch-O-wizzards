@@ -541,5 +541,5 @@ td {
 }
 
 tr:nth-child(even) {
-    background-color: var(--bg-surface);
+  background-color: var(--bg-surface);
 }
