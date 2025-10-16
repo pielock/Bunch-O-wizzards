@@ -510,3 +510,36 @@ button:focus-visible {
     padding-right: 2rem;
   }
 }
+
+/* style for stats section */
+#Stats {
+  background-color: var(--bg-main);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+th {
+  width: 70%;
+  text-align: left;
+  font-weight: normal;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+}
+
+td {
+  width: 30%;
+  text-align: right;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-right: 0.5rem;
+}
+
+tr:nth-child(even) {
+    background-color: var(--bg-surface);
+}
