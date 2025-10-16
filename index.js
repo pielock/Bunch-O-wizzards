@@ -2,7 +2,6 @@
  * from the PokeAPI and display it on the webpage.
  * Handles errors gracefully and updates the DOM accordingly.
  */
-
 let ALL_POKEMONS = [];
 
 async function fetchData() {
@@ -44,33 +43,28 @@ async function fetchData() {
           id="pokemonSprite"
         />      
       <p id="name">Name: ${data.name}</p>
+      <p id="id">ID: ${data.id}</p>
       <p id="type">Type: ${types}</p>
       <p id="abilities">Abilities: ${abilities}</p>            
-      <p id="id">ID: ${data.id}</p>
       <p id="height">Height: ${data.height / 10} Meters</p>
-      <p id="weight">Weight: ${data.weight / 10} Kg</p>
+      <p id="weight">Weight: ${data.weight / 10} kg</p>
       `;
 
-    const card = document.getElementById("pokemon-data");
-    const primary = Array.isArray(types)
-      ? (types[0] || "").toLowerCase()
-      : String(types || "").toLowerCase();
+    const primary = (data.types?.[0]?.type?.name || types.split(",")[0] || "")
+      .toLowerCase()
+      .trim();
 
-    if (primary) card.setAttribute("data-type", primary);
+    if (primary) {
+      pokemonDataEl.setAttribute("data-type", primary);
+    } else {
+      pokemonDataEl.removeAttribute("data-type");
+    }
   } catch (err) {
     console.error(err);
     pokemonDataEl.innerText =
       "Sorry, we are having some temporary server issues";
   }
 }
-
-/**
- * ========== TO DO LIST ==========
- * 1. Better Pictures - COMPLETE
- * 2. ID - COMPLETE
- * 3. Abilities - COMPLETE
- * 4. Height + Weight - COMPLETE
- */
 
 /**
  * jQuery function to set up autocomplete on the #pokemonName input field.
@@ -111,3 +105,13 @@ $(async function () {
     console.error(err);
   }
 });
+
+// Trigger fetchData() when Enter is pressed inside the input box
+document
+  .getElementById("pokemonName")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      fetchData();
+    }
+  });
