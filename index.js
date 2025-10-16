@@ -136,4 +136,53 @@ document
     }
   });
 
+async function randomPokemon() {
+  try {
+    // setTimeout(() => {}, 1000);
+    const pokemonDataEl = document.getElementById("pokemon-data");
+    pokemonDataEl.innerText = "Please wait while we fetch the Pokemon's Data";
 
+    const randomPokemonInx = Math.floor(Math.random() * 1025);
+    console.log(randomPokemonInx);
+
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${randomPokemonInx}`
+    );
+
+    if (!response.ok) {
+      throw new Error("Could not fetch resource");
+    }
+
+    const data = await response.json();
+    const types = data.types.map((t) => t.type.name).join(", ");
+    const abilities = data.abilities.map((a) => a.ability.name).join(", ");
+
+    pokemonDataEl.innerHTML = `      
+      <img
+          src="${data.sprites.other["official-artwork"].front_default}"
+          alt="Pokemon Sprite"
+          id="pokemonSprite"
+        />      
+      <p id="name">Name: ${data.name}</p>
+      <p id="id">ID: ${data.id}</p>
+      <p id="type">Type: ${types}</p>
+      <p id="abilities">Abilities: ${abilities}</p>            
+      <p id="height">Height: ${data.height / 10} Meters</p>
+      <p id="weight">Weight: ${data.weight / 10} kg</p>
+      `;
+
+    const primary = (data.types?.[0]?.type?.name || types.split(",")[0] || "")
+      .toLowerCase()
+      .trim();
+
+    if (primary) {
+      pokemonDataEl.setAttribute("data-type", primary);
+    } else {
+      pokemonDataEl.removeAttribute("data-type");
+    }
+  } catch (err) {
+    console.error(err);
+    pokemonDataEl.innerText =
+      "Sorry, we are having some temporary server issues";
+  }
+}
