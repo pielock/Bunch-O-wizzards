@@ -7,7 +7,7 @@ let ALL_POKEMONS = [];
 
 async function fetchData() {
   const pokemonDataEl = document.getElementById("pokemon-data");
-  pokemonDataEl.innerText = "Please wait we are fetching the Pokemon's Data";
+  pokemonDataEl.innerText = "Please wait while we fetch the Pokemon's Data";
 
   try {
     const pokemonNameEl = document.getElementById("pokemonName");
@@ -18,7 +18,6 @@ async function fetchData() {
 
     // Validate Users Input (Cannot be empty && Must be valid pokemon)
     if (!pokemonNameEl.value) {
-      console.log(pokemonName.value);
       return (pokemonDataEl.innerText = "Input cannot be empty");
     } else if (!ALL_POKEMONS.includes(pokemonName)) {
       return (pokemonDataEl.innerText = "Please enter a valid pokemon");
@@ -35,12 +34,8 @@ async function fetchData() {
     }
     // Parsing the JSON data from the responses
     const data = await response.json();
-
-    // console.log(data); // <-- Logging data to see what data we can pull
     const types = data.types.map((t) => t.type.name).join(", ");
-
     const abilities = data.abilities.map((a) => a.ability.name).join(", ");
-    console.log(data);
 
     pokemonDataEl.innerHTML = `      
       <img
@@ -54,9 +49,14 @@ async function fetchData() {
       <p id="id">ID: ${data.id}</p>
       <p id="height">Height: ${data.height / 10} Meters</p>
       <p id="weight">Weight: ${data.weight / 10} Kg</p>
-      
-    
       `;
+
+    const card = document.getElementById("pokemon-data");
+    const primary = Array.isArray(types)
+      ? (types[0] || "").toLowerCase()
+      : String(types || "").toLowerCase();
+
+    if (primary) card.setAttribute("data-type", primary);
   } catch (err) {
     console.error(err);
     pokemonDataEl.innerText =
@@ -84,7 +84,7 @@ $(async function () {
     );
 
     if (!res.ok) {
-      throw new Error("Could Not Fetch Pokemon Resource"());
+      throw new Error("Could Not Fetch Pokemon Resource");
     }
 
     const data = await res.json();
@@ -111,4 +111,3 @@ $(async function () {
     console.error(err);
   }
 });
-

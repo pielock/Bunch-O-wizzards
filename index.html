@@ -19,21 +19,33 @@
     />
 
     <link rel="stylesheet" href="styles.css" />
-    <title>Nasa API Demo</title>
+    <title>Pokemon API Demo</title>
   </head>
   <body>
-    <section class="pokemon-section">
-      <h1 class="poke-font">Pokèmon API's</h1>
-      <input
-        type="text"
-        id="pokemonName"
-        placeholder="Enter Pokemon Name"
-        value="growlithe"
-      />
-      <button class="poke-font" onclick="fetchData()">Fetch Pokèmon</button
-      ><br />
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <h1 class="logo poke-font"><a href="index.html">Bunch O' Wizards</a></h1>
+      <ul class="links">
+        <li><a href="#pokemon-section">Pokemon Section</a></li>
+      </ul>
+    </nav>
+
+    <!-- POKEMON SECTION -->
+    <section id="pokemon-section" class="pokemon-section">
+      <h1 class="poke-font">Pokèmon API</h1>
+      <div class="controls">
+        <input
+          type="text"
+          id="pokemonName"
+          placeholder="Enter Pokemon Name"
+          value="pikachu"
+        />
+        <button class="poke-font" onclick="fetchData()">Fetch Pokèmon</button
+        ><br />
+      </div>
       <div class="pokemon-data" id="pokemon-data"></div>
     </section>
+
     <script src="index.js"></script>
   </body>
 </html>
