@@ -1,15 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nasa API Demo</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>NASA API Demo</h1>
-    <p>Sponsored By @Jamal @Steven @Zheng</p>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Pokemon Font -->
+    <link
+      href="https://fonts.cdnfonts.com/css/pokemon-solid"
+      rel="stylesheet"
+    />
+
+    <!-- jQuery via CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <title>Pokemon API Demo</title>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <h1 class="logo poke-font"><a href="index.html">Bunch O' Wizards</a></h1>
+      <ul class="links">
+        <li><a href="#pokemon-section">Pokemon Section</a></li>
+      </ul>
+    </nav>
+
+    <!-- POKEMON SECTION -->
+    <section id="pokemon-section" class="pokemon-section">
+      <h1 class="poke-font">Pokèmon Search</h1>
+      <div class="controls">
+        <input type="text" id="pokemonName" placeholder="Enter Pokemon Name" />
+        <button class="poke-font" onclick="fetchData()">Fetch Pokèmon</button
+        ><br />
+      </div>
+      <div class="pokemon-data" id="pokemon-data"></div>
+    </section>
+
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
