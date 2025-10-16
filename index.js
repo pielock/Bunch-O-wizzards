@@ -36,6 +36,20 @@ async function fetchData() {
     const types = data.types.map((t) => t.type.name).join(", ");
     const abilities = data.abilities.map((a) => a.ability.name).join(", ");
 
+    // stats with 1st letter upper case
+    const statsUpper = data.stats.map(stat => {
+      const formattedName = stat.stat.name
+      .split('-')
+      .map(name => name.charAt(0).toUpperCase()+name.slice(1))
+      .join(' ')
+    
+      return `
+      <tr>
+        <th>${formattedName}</th>
+        <td>${stat.base_stat}</td>
+      </tr>`; 
+      }).join('');
+
     pokemonDataEl.innerHTML = `      
       <img
           src="${data.sprites.other["official-artwork"].front_default}"
@@ -48,6 +62,12 @@ async function fetchData() {
       <p id="abilities">Abilities: ${abilities}</p>            
       <p id="height">Height: ${data.height / 10} Meters</p>
       <p id="weight">Weight: ${data.weight / 10} kg</p>
+      <div id="Stats" >
+        <p>Stats: </p>
+        <table>
+          ${statsUpper}
+        </table>
+      </div>
       `;
 
     const primary = (data.types?.[0]?.type?.name || types.split(",")[0] || "")
@@ -115,3 +135,5 @@ document
       fetchData();
     }
   });
+
+
