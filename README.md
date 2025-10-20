@@ -1,9 +1,8 @@
-# Bunch-O-wizzards
-# Pokémon API Demo
+# Bunch-O-wizzards - Pokémon API Demo
 
 A simple web app that lets you search for Pokémon using the PokeAPI. You can look up any Pokémon by name, or fetch a random one. The app displays artwork, type, abilities, height, weight, and base stats — all styled dynamically by Pokémon type.
 
-# 🌟 Features
+# Features
 
 - Search Pokémon by name
 - Autocomplete suggestions using jQuery UI
@@ -11,7 +10,7 @@ A simple web app that lets you search for Pokémon using the PokeAPI. You can lo
 - Displays artwork, types, abilities, stats, and more
 - Responsive dark-themed design with Pokémon-style buttons
 
-# 🧠 Tech Stack
+# Tech Stack
 
 1. HTML5
 2. CSS3
@@ -19,7 +18,7 @@ A simple web app that lets you search for Pokémon using the PokeAPI. You can lo
 4. jQuery & jQuery UI
 5. PokeAPI
 
-# 🚀 How to Run
+# How to Run
 
 Clone this repository:
 
