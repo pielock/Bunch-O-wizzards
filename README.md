@@ -24,7 +24,7 @@ A simple web app that lets you search for Pokémon using the PokeAPI. You can lo
 Clone this repository:
 
 ```bash 
-git clone https://github.com/<your-username>/<repo-name>.git
+git clone https://github.com/pielock/Bunch-O-wizzards.git
 ```
 
 1. Open index.html in your browser — no setup required.
