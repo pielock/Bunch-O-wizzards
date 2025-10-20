@@ -32,7 +32,7 @@ git clone https://github.com/pielock/Bunch-O-wizzards.git
 
 3. Click Select Random to get a random Pokémon.
 
-# 📡 API Used
+# API Used
 
 PokeAPI
 - https://pokeapi.co/ 
