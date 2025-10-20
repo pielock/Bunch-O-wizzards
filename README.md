@@ -1,15 +1,40 @@
 # Bunch-O-wizzards
-team collab to build a web page using api Pokemon
+# Pokémon API Demo
 
-https://pielock.github.io/Bunch-O-wizzards/
+A simple web app that lets you search for Pokémon using the PokeAPI. You can look up any Pokémon by name, or fetch a random one. The app displays artwork, type, abilities, height, weight, and base stats — all styled dynamically by Pokémon type.
 
-This is your first group project and an opportunity to use the skills you've learned over the last five weeks.  
-In this project, you will work in teams of three to wireframe, design, plan, and develop an interactive Web application using HTML, CSS, and JavaScript that utilises one or more 3rd Party APIs.
+# 🌟 Features
 
-Your application must:
+- Search Pokémon by name
+- Autocomplete suggestions using jQuery UI
+- Random Pokémon generator
+- Displays artwork, types, abilities, stats, and more
+- Responsive dark-themed design with Pokémon-style buttons
 
-- Accept and validate user input
-- Query and use data from one or more 3rd Party APIs
-- Display data-driven results to the user
-- Be responsive across devices
-- Be deployed on GitHub Pages
+# 🧠 Tech Stack
+
+1. HTML5
+2. CSS3
+3. JavaScript (ES6+)
+4. jQuery & jQuery UI
+5. PokeAPI
+
+# 🚀 How to Run
+
+Clone this repository:
+
+```bash 
+git clone https://github.com/<your-username>/<repo-name>.git
+```
+
+1. Open index.html in your browser — no setup required.
+
+2. Type a Pokémon name (e.g., pikachu) and hit Enter or click Fetch Pokémon.
+
+3. Click Select Random to get a random Pokémon.
+
+# 📡 API Used
+
+PokeAPI
+- https://pokeapi.co/ 
+- RESTful Pokémon API.
